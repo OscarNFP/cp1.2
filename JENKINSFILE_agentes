@@ -12,10 +12,10 @@ pipeline{
         stage('GET CODE'){
             // Paso para clonar el repositorio Git
             steps{
-                cleanWs(
-                    deleteDirs: true,
-                    disableDeferredWipeout: true
-                )
+                //cleanWs(
+                //    deleteDirs: true,
+                //    disableDeferredWipeout: true
+                //)
                 checkout scm
                 sh '''
                 echo $WORKSPACE
@@ -29,10 +29,10 @@ pipeline{
         // Etapa de prueba de código estático
         stage('Static'){
             steps{
-                cleanWs(
-                    deleteDirs: true,
-                    disableDeferredWipeout: true
-                )
+                //cleanWs(
+                //    deleteDirs: true,
+                //    disableDeferredWipeout: true
+                //)
                 sh '''
                 echo ${WORKSPACE}
                 whoami
@@ -50,10 +50,10 @@ pipeline{
                     agent {label 'agent1'}
                         steps{
                             catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE'){
-                                cleanWs(
-                                deleteDirs: true,
-                                    disableDeferredWipeout: true
-                                )    
+                                //cleanWs(
+                                //deleteDirs: true,
+                                //    disableDeferredWipeout: true
+                                //)    
                                 unstash name:'code'
                                 sh '''
                                     echo ${WORKSPACE}
@@ -71,10 +71,10 @@ pipeline{
                 stage('REST'){
                     agent {label 'agent2'}
                     steps{
-                        cleanWs(
-                            deleteDirs: true,
-                            disableDeferredWipeout: true
-                        )
+                        //cleanWs(
+                        //    deleteDirs: true,
+                        //    disableDeferredWipeout: true
+                        //)
                         unstash name:'code'
                         sh '''
                             echo ${WORKSPACE}
@@ -108,10 +108,10 @@ pipeline{
                 stage('Coverage') {
                     agent { label 'agent1' }
                     steps {
-                        cleanWs(
-                           deleteDirs: true,
-                            disableDeferredWipeout: true
-                        )
+                        //cleanWs(
+                        //   deleteDirs: true,
+                        //    disableDeferredWipeout: true
+                        //)
                         unstash 'coverage'
                         sh '''
                             echo ${WORKSPACE}
@@ -125,10 +125,10 @@ pipeline{
                 stage('Security Test') {
                     agent { label 'agent2' }
                     steps {
-                        cleanWs(
-                           deleteDirs: true,
-                            disableDeferredWipeout: true
-                        )
+                        //cleanWs(
+                        //   deleteDirs: true,
+                        //    disableDeferredWipeout: true
+                        //)
                         unstash 'code'
                         sh '''
                             echo ${WORKSPACE}
@@ -144,10 +144,10 @@ pipeline{
                 stage('Performance') {
                     agent { label 'agent3' }
                     steps {
-                        cleanWs(
-                           deleteDirs: true,
-                            disableDeferredWipeout: true
-                        )
+//                        cleanWs(
+//                           deleteDirs: true,
+//                            disableDeferredWipeout: true
+//                        )
                         unstash 'code'
                         sh '''
                             echo ${WORKSPACE}
