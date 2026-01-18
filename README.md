@@ -1,0 +1,9 @@
+# Repositorio CP1.2
+
+En este repositorio se encuentran el código fuente y el fichero **Jenkinsfile** necesarios para el desarrollo y ejecución del **CP1.2**.  
+
+---
+
+## Autor
+**Óscar Nappo**
+
